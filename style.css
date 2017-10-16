@@ -1,0 +1,198 @@
+html{
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #efefef;
+    margin: 0;
+    padding: 0;
+}
+
+h1,h2,h3,h4,h5{
+    color: #696969;    
+}
+
+section{
+    width: 100%;
+    padding-bottom: 150px;
+}
+
+/*----------------------------------------- Header ----------------------------------------------------------*/
+
+header{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+header #header-bg{
+    width: 100%;
+    height: 100vh;
+    background: url("headerbg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+header #header-bg #header-info {
+    width: 100%;
+    position: relative;
+    top: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header #header-bg #header-info h1{
+    color: white;
+    font-size: 4em;
+    text-shadow: 1px 1px 2px #000000;
+    margin:25px;
+}
+
+
+nav{
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    transition:  3ms linear;
+}
+
+nav ul li:hover{
+    background-color:#252525;
+}
+
+nav ul li a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+/**************************** Sections ***********************************/
+
+.image-section{
+    display: block;
+    width:100%;
+}
+
+#iphone-x-section{
+    margin: 0;
+    background-color: #fafcfb;
+}
+
+#iphone-8-section{
+    margin: 0;
+    background-color: #fafafa;
+}
+
+#iphx-img{
+    background: url("_img/iphx.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height:800px;
+}
+
+#iph8-img{
+    background: url("_img/iph8.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height:1000px;
+}
+
+.section-title{
+    font-size: 2em;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#iphone-x-section .section-info{
+    margin-top:-200px;
+}
+.section-title h2,.section-title h3{
+    margin: 0;
+}
+.section-title h3{
+    font-size:0.9em;
+}
+
+.section-text{
+    width: 50%;
+    margin:50px auto;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+
+
+/************************************* Article **********************************/
+
+article{
+    font-size: 1.2em;
+}
+
+
+/************************************** Table Styling ***************************/
+
+table{
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 980px;
+}
+th{
+    font-size: 1.5em;
+}
+tr{
+    border-bottom:1px solid #c5c5c5;
+}
+
+table tr:last-child{
+    border: none;
+}
+
+td{
+    padding:40px 0px;
+}
+
+td ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#spec-table td,#spec-table th{
+    width: 50%;
+}
+/******************************* Other ***********************************************/
+
+div.product-details h2{
+    font-size: 2em;
+    margin: 100px 0px;
+    text-align: center;
+}

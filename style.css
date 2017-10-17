@@ -27,32 +27,6 @@ header{
     overflow: hidden;
 }
 
-header #header-bg{
-    width: 100%;
-    height: 100vh;
-    background: url("headerbg.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-header #header-bg #header-info {
-    width: 100%;
-    position: relative;
-    top: 25%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-header #header-bg #header-info h1{
-    color: white;
-    font-size: 4em;
-    text-shadow: 1px 1px 2px #000000;
-    margin:25px;
-}
-
-
 nav{
     width: 100%;
     background-color: black;
@@ -178,6 +152,9 @@ table tr:last-child{
 
 td{
     padding:40px 0px;
+    display: inline-block;
+    margin-right: 30%;
+    
 }
 
 td ul{
@@ -195,4 +172,41 @@ div.product-details h2{
     font-size: 2em;
     margin: 100px 0px;
     text-align: center;
+}
+
+.slide-button{
+    font-size: 1.5em;
+    text-align: center;
+    width: 250px;
+    padding: 15px 0px;
+    border-radius: 50px;
+    font-weight: bold;
+    margin: 50px auto;
+    cursor: pointer;
+    color: #404040;
+    border: 2px solid #404040;
+    transition: all .1s ease-in-out;
+}
+.slide-button:hover{
+    transform: scale(.98);
+}
+
+.slide {
+    display: block;
+    overflow: hidden;
+    transition: all 0.5s linear;
+}
+
+.slide-img{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 1s linear;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }

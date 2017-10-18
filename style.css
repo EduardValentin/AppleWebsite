@@ -85,14 +85,14 @@ nav ul li a{
 }
 
 #iphx-img{
-    background: url("_img/iphx.jpg");
+    background: url("img/iphx.jpg");
     background-size: cover;
     background-position: center;
     min-height:800px;
 }
 
 #iph8-img{
-    background: url("_img/iph8.jpg");
+    background: url("img/iph8.jpg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -183,8 +183,8 @@ div.product-details h2{
     font-weight: bold;
     margin: 50px auto;
     cursor: pointer;
-    color: #404040;
-    border: 2px solid #404040;
+    color: #027fbd;
+    border: 2px solid #027fbd;
     transition: all .1s ease-in-out;
 }
 .slide-button:hover{
@@ -206,7 +206,21 @@ div.product-details h2{
     z-index: 5;
     opacity: 0;
     transition: opacity 1s linear;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+.slide-img:nth-child(1){
+    background: url("img/bg1.jpg");
+}
+.slide-img:nth-child(2){
+    background: url("img/bg2.png");
+}
+.slide-img:nth-child(3){
+    background: url("img/bg3.jpg");
+}
+.slide-img:nth-child(4){
+    background: url("img/bg4.jpg");
 }

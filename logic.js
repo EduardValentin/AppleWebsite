@@ -17,24 +17,27 @@ window.onload = function() {
 function startSlideShow(){
     var arr_slideDivs = document.getElementsByClassName("slide-img");
     var i = 0;
-    
+    var direction = 1;
+    var newOpacity = 1;
+
     arr_slideDivs[0].style.opacity = 1;
 
     timer = setInterval(function(){
         if(i ==  arr_slideDivs.length-1) {
-            for(var j=0;j<arr_slideDivs;j++) {
-                arr_slideDivs[j].style.opacity = 0;     // Reset
-            }
-
-            i = 0;
-            arr_slideDivs[i].style.opacity = 1;
+            direction = -1;
+            newOpacity = 0;
         }
-        else {
-            i++;
-            arr_slideDivs[i].style.opacity = 1;
+        else if (i == 0) {
+            direction = 1;
+            newOpacity = 1;
         }
     
-    }, 3500);
+        // Make changes
+
+        arr_slideDivs[i].style.opacity = newOpacity;
+        i+=direction;
+
+    }, 2500);
 }
 
 function mySlider() {

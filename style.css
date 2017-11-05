@@ -35,7 +35,12 @@ nav{
     left: 0;
     z-index: 5;
 }
+
 nav ul{
+    padding: 0px;
+}
+
+nav > ul{
     width: 100%;
     list-style: none;
     display: flex;
@@ -53,7 +58,6 @@ nav ul li{
     display: flex;
     align-content: center;
     justify-content: center;
-    transition:  3ms linear;
 }
 
 
@@ -63,14 +67,24 @@ nav ul li a{
     align-items: center;
     text-decoration: none;
     color: white;
+    transition: all 300ms linear;
 }
 
-#show-menu-button{
+.toggle,[id^=drop] {
     display: none;
-    color: white;
-    font-size: 3em;
-
 }
+
+
+/* Display Dropdowns on Hover */
+nav ul ul {
+    display: none;
+    background: black;
+    flex-direction: column;
+    position: absolute; 
+    top: 50px; 
+}
+
+
 
 /**************************** Sections ***********************************/
 
@@ -233,25 +247,14 @@ div.product-details h2{
 /******************************************************SUB MENU******************************************************/
 
 
-
-.sub-menu{
-
-    background:black;
-    flex-direction:column;
-    color: white;
-    position: absolute;
-    top: 50px;
-    width: 200px;
-}
-
-.sub-menu > li{
+nav ul ul > li{
     display:flex;
     align-content:center;
     align-items:center;
     border-bottom:1px solid #3b3b3bcc;
 }
 
-.sub-menu > li:last-child{
+nav ul ul > li:last-child{
     border-bottom:none;
 }
 
@@ -268,8 +271,8 @@ div.product-details h2{
 @media (min-width: 721px) {
     /* Changes for non mobile devices */
 
-    nav ul li:hover{
-        background-color:#252525;
+    nav ul li:hover > a {
+        color: rgba(255,255,255,0.60);
     }
     .has-dropdown:hover .sub-menu{
         display:flex;
@@ -278,46 +281,69 @@ div.product-details h2{
     .has-dropdown:hover .arrow-head{
         transform:rotateZ(-90deg);
     }
-    .sub-menu{
-        display: none;
+
+
+    nav ul li:hover > ul {
+        display:flex;
     }
 }
 
 @media (max-width: 720px){
     /* Changes for mobile devices */ 
 
-    #main-menu{
-        height: 100vh;
-    }
-
     #main-menu ul{
         flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
     }
 
     #main-menu ul li{
-        border-bottom: 1px solid rgba(255, 255, 255, 0.37);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         width: 100%;
         justify-content: flex-start;
         flex-direction: column;
-        padding-left: 30px;
+        align-items: flex-start;
+        padding:15px 0px;
         height: auto;
-        min-height: 65px;
     }
+
+    #main-menu ul li > label {
+        padding: 0px;
+        width: 100%;
+    }
+
     #main-menu ul li a{
         justify-content: flex-start;
     }
+
     #main-menu ul li:last-child{
         border-bottom: none;
     }
 
-    #show-menu-button{
-        display: block;
+    #main-menu ul ul {
+        position:static;
+        color: #ffffff;
     }
-    .sub-menu{
+
+    .toggle {
+        display: block;
+        background-color: black ;
+        padding:14px 20px;  
+        color:#FFF;
+        text-decoration:none;
+        border:none;
+    }
+
+
+
+    .toggle + a,
+    .menu {
+        display: none;
+    }
+
+    /* Toggle unordred list display */
+    [id^=drop]:checked + ul {
         display: flex;
-        margin: 10px 0;
-        position: relative;
-        background: none;
     }
 }
 

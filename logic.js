@@ -1,28 +1,11 @@
-
-var windowWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-var widnowHeigth = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-
-var mobileDeviceSize = 720;
-
 (function(){
     document.querySelector("body").style.marginTop = window.innerHeight + "px";
-
-
-    window.onresize = function() {
-        this.windowWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-        this.widnowHeigth = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-
-
-        //handleNav();
-
-    }
 
     window.onload = function() {
         // Code here
         createMainMenu();
         startSlideShow();
         mySliderInit();             // Elements Slider core
-        handleNav();
 
     };
 
@@ -52,40 +35,6 @@ var mobileDeviceSize = 720;
             i+=direction;
 
         }, 2500);
-    }
-
-    function handleNav() {
-        
-        // Nav handler
-        var arr_buttons = document.querySelector("nav").getElementsByClassName("slide-button");
-        var arr_slides = document.querySelector("nav").getElementsByClassName("slide");
-
-        if(this.windowWidth <= this.mobileDeviceSize) {
-
-            console.log(arr_slides);
-
-            for (let i = 0; i < arr_slides.length; i++) {
-                arr_slides[i].setAttribute("data-maxheight" ,  arr_slides[i].offsetHeight);
-                
-                if(!arr_slides[i].classList.contains("closed"))
-                    arr_slides[i].className += " closed";
-
-                arr_slides[i].style.height = 0 + "px";
-            }
-
-
-            for(let i = 0; i<arr_buttons.length;i++) 
-                if(arr_buttons[i])
-                    arr_buttons[i].addEventListener("click", slideButtonClicked);
-            
-
-        } else {
-
-            for(let i = 0; i<arr_buttons.length;i++) 
-                if(arr_buttons[i])
-                    arr_buttons[i].removeEventListener("click", slideButtonClicked);
-            
-        }
     }
 
     function mySliderInit() {
@@ -132,37 +81,38 @@ var mobileDeviceSize = 720;
 
     function createMainMenu() {
         var mainMenuHTML = `
-            <ul>
-                <li><a href="#"> Home </a></li>
-                <li><a href="#"> About </a></li>
-
-                <li class="has-dropdown slide-button" data-action="sub1">
-                    <a href="#"> Iphone 8<span class="arrow-head">&#9660</span></a>
-                    <ul id="sub1" class="sub-menu slide">
-                        <li> <a href="#">Specifications </a> </li>
-                        <li> <a href="#"> Price </a> </li>
+        <label for="drop" class="toggle"><span id="hamburgher-icon">&#9776</span></label>
+        <input type="checkbox" id="drop" />
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li>
+                    <!-- First Tier Drop Down -->
+                    <label for="drop-1" class="toggle">iPhone 8 +</label>
+                    <a href="#">iPhone 8 +</a>
+                    <input type="checkbox" id="drop-1"/>
+                    <ul>
+                        <li><a href="#">Specifications</a></li>
+                        <li><a href="#">Price</a></li>
                     </ul> 
-                </li>
 
-                <li class="has-dropdown slide-button" data-action="sub2">
-                    <a href="#"> Iphone 8 Plus<span class="arrow-head">&#9660</span></a>
-                    <ul id="sub2" class="sub-menu slide">
-                        <li> <a href="#">Specifications</a> </li>
-                        <li> <a href="#"> Price </a> </li>
-                    </ul> 
                 </li>
+                <li>
 
-                <li class="has-dropdown slide-button" data-action="sub3">
-                    <a href="#"> Iphone X <span class="arrow-head">&#9660</span></a>
-                    <ul id="sub3" class="sub-menu slide">
-                        <li> <a href="#"> Specifications </a> </li>
-                        <li> <a href="#"> Price </a> </li>
-                    </ul> 
+                <!-- First Tier Drop Down -->
+                <label for="drop-2" class="toggle">iPhone X +</label>
+                <a href="#">iPhone X +</a>
+                <input type="checkbox" id="drop-2"/>
+                <ul>
+                    <li><a href="#">Specifications</a></li>
+                    <li><a href="#">Price</a></li>
+                </ul>
                 </li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About</a></li>
             </ul>
         `;
 
-        var menu = document.getElementById("menu-items");
+        var menu = document.getElementById("main-menu");
         menu.innerHTML = mainMenuHTML;
     }
 })();

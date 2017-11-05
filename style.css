@@ -30,7 +30,7 @@ header{
 nav{
     width: 100%;
     background-color: black;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 5;
@@ -49,15 +49,13 @@ nav ul{
 nav ul li{
     width: 200px;
     height: 50px;
+    cursor:pointer;
     display: flex;
     align-content: center;
     justify-content: center;
     transition:  3ms linear;
 }
 
-nav ul li:hover{
-    background-color:#252525;
-}
 
 nav ul li a{
     display: flex;
@@ -65,6 +63,13 @@ nav ul li a{
     align-items: center;
     text-decoration: none;
     color: white;
+}
+
+#show-menu-button{
+    display: none;
+    color: white;
+    font-size: 3em;
+
 }
 
 /**************************** Sections ***********************************/
@@ -174,20 +179,20 @@ div.product-details h2{
     text-align: center;
 }
 
-.slide-button{
+.table-show-button{
     font-size: 1.5em;
     text-align: center;
     width: 250px;
     padding: 15px 0px;
     border-radius: 50px;
     font-weight: bold;
-    margin: 50px auto;
+    margin: 0 auto 20px auto;
     cursor: pointer;
     color: #027fbd;
     border: 2px solid #027fbd;
     transition: all .1s ease-in-out;
 }
-.slide-button:hover{
+.table-show-button:hover{
     transform: scale(.98);
 }
 
@@ -224,3 +229,95 @@ div.product-details h2{
 .slide-img:nth-child(4){
     background: url("img/bg4.jpg");
 }
+
+/******************************************************SUB MENU******************************************************/
+
+
+
+.sub-menu{
+
+    background:black;
+    flex-direction:column;
+    color: white;
+    position: absolute;
+    top: 50px;
+    width: 200px;
+}
+
+.sub-menu > li{
+    display:flex;
+    align-content:center;
+    align-items:center;
+    border-bottom:1px solid #3b3b3bcc;
+}
+
+.sub-menu > li:last-child{
+    border-bottom:none;
+}
+
+.arrow-head{
+    transform-origin:center;
+    transition:transform .2s linear;
+    margin-left:20px;
+    color:white;
+    font-size:0.6em;
+}
+
+/****************************************** Media Query *****************************************************/
+
+@media (min-width: 721px) {
+    /* Changes for non mobile devices */
+
+    nav ul li:hover{
+        background-color:#252525;
+    }
+    .has-dropdown:hover .sub-menu{
+        display:flex;
+    }
+
+    .has-dropdown:hover .arrow-head{
+        transform:rotateZ(-90deg);
+    }
+    .sub-menu{
+        display: none;
+    }
+}
+
+@media (max-width: 720px){
+    /* Changes for mobile devices */ 
+
+    #main-menu{
+        height: 100vh;
+    }
+
+    #main-menu ul{
+        flex-direction: column;
+    }
+
+    #main-menu ul li{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.37);
+        width: 100%;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding-left: 30px;
+        height: auto;
+        min-height: 65px;
+    }
+    #main-menu ul li a{
+        justify-content: flex-start;
+    }
+    #main-menu ul li:last-child{
+        border-bottom: none;
+    }
+
+    #show-menu-button{
+        display: block;
+    }
+    .sub-menu{
+        display: flex;
+        margin: 10px 0;
+        position: relative;
+        background: none;
+    }
+}
+

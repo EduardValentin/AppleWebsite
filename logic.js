@@ -1,109 +1,168 @@
 
+var windowWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+var widnowHeigth = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+var mobileDeviceSize = 720;
+
+(function(){
+    document.querySelector("body").style.marginTop = window.innerHeight + "px";
 
 
-document.querySelector("body").style.marginTop = window.innerHeight + "px";
+    window.onresize = function() {
+        this.windowWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        this.widnowHeigth = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-window.onload = function() {
-    // Code here
-    
-    startSlideShow();
-    createMainMenu();
-    mySlider();             // Elements Slider core
 
-};
+        //handleNav();
 
-// Functions -------------------------------------------------------------
+    }
 
-function startSlideShow(){
-    var arr_slideDivs = document.getElementsByClassName("slide-img");
-    var i = 0;
-    
-    arr_slideDivs[0].style.opacity = 1;
+    window.onload = function() {
+        // Code here
+        createMainMenu();
+        startSlideShow();
+        mySliderInit();             // Elements Slider core
+        handleNav();
 
-    timer = setInterval(function(){
-        if(i ==  arr_slideDivs.length-1) {
-            for(var j=0;j<arr_slideDivs;j++) {
-                arr_slideDivs[j].style.opacity = 0;     // Reset
+    };
+
+    // Functions -------------------------------------------------------------
+
+    function startSlideShow(){
+        var arr_slideDivs = document.getElementsByClassName("slide-img");
+        var i = 0;
+        var direction = 1;
+        var newOpacity = 1;
+
+        arr_slideDivs[0].style.opacity = 1;
+
+        timer = setInterval(function(){
+            if(i ==  arr_slideDivs.length-1) {
+                direction = -1;
+                newOpacity = 0;
+            }
+            else if (i == 0) {
+                direction = 1;
+                newOpacity = 1;
+            }
+        
+            // Make changes
+
+            arr_slideDivs[i].style.opacity = newOpacity;
+            i+=direction;
+
+        }, 2500);
+    }
+
+    function handleNav() {
+        
+        // Nav handler
+        var arr_buttons = document.querySelector("nav").getElementsByClassName("slide-button");
+        var arr_slides = document.querySelector("nav").getElementsByClassName("slide");
+
+        if(this.windowWidth <= this.mobileDeviceSize) {
+
+            console.log(arr_slides);
+
+            for (let i = 0; i < arr_slides.length; i++) {
+                arr_slides[i].setAttribute("data-maxheight" ,  arr_slides[i].offsetHeight);
+                
+                if(!arr_slides[i].classList.contains("closed"))
+                    arr_slides[i].className += " closed";
+
+                arr_slides[i].style.height = 0 + "px";
             }
 
-            i = 0;
-            arr_slideDivs[i].style.opacity = 1;
-        }
-        else {
-            i++;
-            arr_slideDivs[i].style.opacity = 1;
-        }
-    
-    }, 3500);
-}
 
-function mySlider() {
+            for(let i = 0; i<arr_buttons.length;i++) 
+                if(arr_buttons[i])
+                    arr_buttons[i].addEventListener("click", slideButtonClicked);
+            
 
-    var arr_tables = document.getElementsByClassName("slide");
+        } else {
 
-    for (var i = 0; i < arr_tables.length; i++) {
-        if (arr_tables[i].id == "iph8-spec") {
-            arr_tables[i].setAttribute("data-maxheight" ,  arr_tables[i].offsetHeight);
-        } else if (arr_tables[i].id == "iph8-price") {
-            arr_tables[i].setAttribute("data-maxheight" ,  arr_tables[i].offsetHeight);
-        } else if (arr_tables[i].id == "iphx-spec") {
-            arr_tables[i].setAttribute("data-maxheight" ,  arr_tables[i].offsetHeight);
-        } else if (arr_tables[i].id == "iphx-price") {
-            arr_tables[i].setAttribute("data-maxheight" ,  arr_tables[i].offsetHeight);
+            for(let i = 0; i<arr_buttons.length;i++) 
+                if(arr_buttons[i])
+                    arr_buttons[i].removeEventListener("click", slideButtonClicked);
+            
         }
     }
 
-    // After we calculate the heights we set the closed class to tables
+    function mySliderInit() {
+        var arr_slides = document.querySelector("main").getElementsByClassName("slide");
 
-    var arr_slides = document.getElementsByClassName("slide");
-    for(let i =0;i<arr_slides.length;i++) {
-        arr_slides[i].className += " closed";
-        arr_slides[i].style.height = 0 + "px";
-        //arr_slides[i].style.visibility = "hidden";
+        for (let i = 0; i < arr_slides.length; i++) {
+            arr_slides[i].setAttribute("data-maxheight" ,  arr_slides[i].offsetHeight);
+            arr_slides[i].className += " closed";
+            arr_slides[i].style.height = 0 + "px";
+        }
+
+        // Now we get all the slide buttons and add click events to them
+
+        var arr_slideButtons = document.querySelector("main").getElementsByClassName("slide-button");
+
+        for(let i = 0; i<arr_slideButtons.length;i++) {
+            arr_slideButtons[i].addEventListener("click", slideButtonClicked);
+        }
+
+
     }
 
-    // Now we get all the slide buttons and add click events to them
+    function slideButtonClicked(event) {
+        var actionOnID = event.target.getAttribute("data-action");
+        console.log(actionOnID);
+        var element = document.getElementById(actionOnID);
+        console.log(element);
+        if(element.classList.contains("closed")) {
+            // We open
+            element.classList.remove("closed");
+            element.classList.add("open");
+            element.style.height = element.getAttribute("data-maxheight") + "px";
+            //element.style.display = "block";
 
-    var arr_slideButtons = document.getElementsByClassName("slide-button");
-    for(let i = 0; i<arr_slides.length;i++) {
-        arr_slideButtons[i].addEventListener("click", slideButtonClicked);
+            
+        } else {
+            // We close
+            element.classList.remove("open");
+            element.classList.add("closed");
+            element.style.height = 0 + "px";
+            //element.style.display = "none";
+        }
     }
 
-}
+    function createMainMenu() {
+        var mainMenuHTML = `
+            <ul>
+                <li><a href="#"> Home </a></li>
+                <li><a href="#"> About </a></li>
 
-function slideButtonClicked(event) {
-    var actionOnID = event.target.getAttribute("data-action");
-    var element = document.getElementById(actionOnID);
-    console.log(element);
-    if(element.classList.contains("closed")) {
-        // We open
-        element.classList.remove("closed");
-        element.classList.add("open");
+                <li class="has-dropdown slide-button" data-action="sub1">
+                    <a href="#"> Iphone 8<span class="arrow-head">&#9660</span></a>
+                    <ul id="sub1" class="sub-menu slide">
+                        <li> <a href="#">Specifications </a> </li>
+                        <li> <a href="#"> Price </a> </li>
+                    </ul> 
+                </li>
 
-        element.style.height = element.getAttribute("data-maxheight") + "px";
-        //element.style.display = "block";
+                <li class="has-dropdown slide-button" data-action="sub2">
+                    <a href="#"> Iphone 8 Plus<span class="arrow-head">&#9660</span></a>
+                    <ul id="sub2" class="sub-menu slide">
+                        <li> <a href="#">Specifications</a> </li>
+                        <li> <a href="#"> Price </a> </li>
+                    </ul> 
+                </li>
 
-        
-    } else {
-        // We close
-        element.classList.remove("open");
-        element.classList.add("closed");
-        element.style.height = 0 + "px";
-        //element.style.display = "none";
+                <li class="has-dropdown slide-button" data-action="sub3">
+                    <a href="#"> Iphone X <span class="arrow-head">&#9660</span></a>
+                    <ul id="sub3" class="sub-menu slide">
+                        <li> <a href="#"> Specifications </a> </li>
+                        <li> <a href="#"> Price </a> </li>
+                    </ul> 
+                </li>
+            </ul>
+        `;
+
+        var menu = document.getElementById("menu-items");
+        menu.innerHTML = mainMenuHTML;
     }
-}
-
-function createMainMenu() {
-    var mainMenuHTML = `
-        <ul>
-            <li><a href="#"> Home </a></li>
-            <li><a href="#"> About </a></li>
-            <li><a href="#"> Iphone 8 </a></li>
-            <li><a href="#"> Iphone 8 Plus </a></li>
-            <li><a href="#"> Iphone X </a></li>
-        </ul>
-    `;
-
-    var menu = document.getElementById("main-menu");
-    menu.innerHTML = mainMenuHTML;
-}
+})();

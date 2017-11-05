@@ -3,9 +3,9 @@
 
     window.onload = function() {
         // Code here
+        mySliderInit();             // Elements Slider core
         createMainMenu();
         startSlideShow();
-        mySliderInit();             // Elements Slider core
 
     };
 

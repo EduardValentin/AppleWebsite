@@ -1,5 +1,7 @@
 (function(){
-    document.querySelector("body").style.marginTop = window.innerHeight + "px";
+
+    if(location.pathname.search("index.html") != -1)
+        document.querySelector("body").style.marginTop = window.innerHeight + "px";
 
     window.onload = function() {
         // Code here
@@ -84,15 +86,15 @@
         <label for="drop" class="toggle"><span id="hamburgher-icon">&#9776</span></label>
         <input type="checkbox" id="drop" />
             <ul class="menu">
-                <li><a href="#">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li>
                     <!-- First Tier Drop Down -->
                     <label for="drop-1" class="toggle">iPhone 8 +</label>
-                    <a href="#">iPhone 8 +</a>
+                    <a href="index.html#iphone-8-section">iPhone 8 +</a>
                     <input type="checkbox" id="drop-1"/>
                     <ul>
-                        <li><a href="#">Specifications</a></li>
-                        <li><a href="#">Price</a></li>
+                        <li><a href="index.html#iph8-spec">Specifications</a></li>
+                        <li><a href="index.html#iph8-price">Price</a></li>
                     </ul> 
 
                 </li>
@@ -100,15 +102,15 @@
 
                 <!-- First Tier Drop Down -->
                 <label for="drop-2" class="toggle">iPhone X +</label>
-                <a href="#">iPhone X +</a>
+                <a href="index.html#iphone-x-section">iPhone X +</a>
                 <input type="checkbox" id="drop-2"/>
                 <ul>
-                    <li><a href="#">Specifications</a></li>
-                    <li><a href="#">Price</a></li>
+                    <li><a href="index.html#iphx-spec">Specifications</a></li>
+                    <li><a href="index.html#iphx-price">Price</a></li>
                 </ul>
                 </li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="index.html#videos-section">Products</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
         `;
 

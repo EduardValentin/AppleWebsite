@@ -5,8 +5,8 @@ html{
 }
 
 body{
-    background-color: #efefef;
-    margin: 0;
+    background-color: #f7f7f7;
+    margin:50px 0 0 0;
     padding: 0;
 }
 
@@ -160,7 +160,9 @@ nav ul ul > li:last-child{
     text-align: center;
     font-size: 1.5em;
 }
-
+#about-section{
+    margin-top: 100px;
+}
 /************************************** Other Products / Videos***************************/
 
 section#videos-section{
@@ -176,12 +178,16 @@ div#videos-grid{
     flex-wrap: wrap;
     width: 70%;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
-div#videos-grid iframe{
+div#videos-grid div.grid-item{
     width: 30%;
-    margin: 2.5px;
+    margin: 5px;
+}
+
+div#videos-grid div.grid-item video{
+    width: 100%;
 }
 
 div#videos-wrapper{

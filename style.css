@@ -30,7 +30,7 @@ header{
 nav{
     width: 100%;
     background-color: black;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 5;
@@ -56,9 +56,6 @@ nav ul li{
     transition:  3ms linear;
 }
 
-nav ul li:hover{
-    background-color:#252525;
-}
 
 nav ul li a{
     display: flex;
@@ -66,6 +63,13 @@ nav ul li a{
     align-items: center;
     text-decoration: none;
     color: white;
+}
+
+#show-menu-button{
+    display: none;
+    color: white;
+    font-size: 3em;
+
 }
 
 /**************************** Sections ***********************************/
@@ -175,7 +179,7 @@ div.product-details h2{
     text-align: center;
 }
 
-.slide-button{
+.table-show-button{
     font-size: 1.5em;
     text-align: center;
     width: 250px;
@@ -188,7 +192,7 @@ div.product-details h2{
     border: 2px solid #027fbd;
     transition: all .1s ease-in-out;
 }
-.slide-button:hover{
+.table-show-button:hover{
     transform: scale(.98);
 }
 
@@ -228,16 +232,10 @@ div.product-details h2{
 
 /******************************************************SUB MENU******************************************************/
 
-.has-dropdown:hover .sub-menu{
-    display:flex;
-}
 
-.has-dropdown:hover .arrow-head{
-    transform:rotateZ(-90deg);
-}
 
 .sub-menu{
-    display:none;
+
     background:black;
     flex-direction:column;
     color: white;
@@ -262,5 +260,64 @@ div.product-details h2{
     transition:transform .2s linear;
     margin-left:20px;
     color:white;
-    font-size:0.8em;
+    font-size:0.6em;
 }
+
+/****************************************** Media Query *****************************************************/
+
+@media (min-width: 721px) {
+    /* Changes for non mobile devices */
+
+    nav ul li:hover{
+        background-color:#252525;
+    }
+    .has-dropdown:hover .sub-menu{
+        display:flex;
+    }
+
+    .has-dropdown:hover .arrow-head{
+        transform:rotateZ(-90deg);
+    }
+    .sub-menu{
+        display: none;
+    }
+}
+
+@media (max-width: 720px){
+    /* Changes for mobile devices */ 
+
+    #main-menu{
+        height: 100vh;
+    }
+
+    #main-menu ul{
+        flex-direction: column;
+    }
+
+    #main-menu ul li{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.37);
+        width: 100%;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding-left: 30px;
+        height: auto;
+        min-height: 65px;
+    }
+    #main-menu ul li a{
+        justify-content: flex-start;
+    }
+    #main-menu ul li:last-child{
+        border-bottom: none;
+    }
+
+    #show-menu-button{
+        display: block;
+    }
+    .sub-menu{
+        display: flex;
+        margin: 10px 0;
+        position: relative;
+        background: none;
+    }
+}
+

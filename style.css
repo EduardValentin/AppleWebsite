@@ -163,14 +163,23 @@ nav ul ul > li:last-child{
 #about-section{
     margin-top: 100px;
 }
-/************************************** Other Products / Videos***************************/
 
-section#videos-section{
+#about-section img{
+    margin: 50px auto;
+    display: block;
+}
+/************************************** Map ***************************/
+
+#map-wrapper{
     margin-top: 100px;
 }
 
+/************************************** Other Products / Videos ***************************/
+
+
+
 section#videos-section .section-title{
-    margin-bottom: 100px;
+    margin: 100px auto;
 }
 
 div#videos-grid{
@@ -312,7 +321,29 @@ div.product-details h2{
 .slide-img:nth-child(4){
     background: url("img/bg4.jpg");
 }
+/****************************************** Footer *****************************************************/
 
+footer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+footer div{
+    width: 50%;
+    font-size: 0.9em;
+    padding: 5px;
+}
+
+footer div:first-child{
+    text-align: left;
+}
+
+footer div:last-child{
+    text-align: right;
+}
 
 /****************************************** Media Query *****************************************************/
 

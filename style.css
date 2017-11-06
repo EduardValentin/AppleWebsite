@@ -84,6 +84,11 @@ nav ul ul {
     top: 50px; 
 }
 
+nav span{
+
+    transition: all 300ms linear;
+}
+
 /******************************************************SUB MENU******************************************************/
 
 
@@ -125,6 +130,7 @@ nav ul ul > li:last-child{
 #iphx-img{
     background: url("img/iphx.jpg");
     background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
     min-height:800px;
 }
@@ -321,6 +327,17 @@ div.product-details h2{
 .slide-img:nth-child(4){
     background: url("img/bg4.jpg");
 }
+
+/****************************************** Wiki *****************************************************/
+section#info-wiki{
+    text-align: center;
+}
+
+section#info-wiki iframe{
+    width: 80%;
+    height: 500px;
+}
+
 /****************************************** Footer *****************************************************/
 
 footer{
@@ -361,11 +378,15 @@ footer div:last-child{
         transform:rotateZ(-90deg);
     }
 
+    nav ul li:hover span{
+        transform: rotate(45deg);
+    }
 
     nav ul li:hover > ul {
         display:flex;
     }
 }
+
 
 @media (max-width: 720px){
     /* Changes for mobile devices */ 
@@ -413,7 +434,18 @@ footer div:last-child{
         border:none;
     }
 
+    div#videos-wrapper{
+        flex-direction: column;
+        align-items: center;
+    }
 
+    div#videos-wrapper #videos-grid{
+        width: 80%;
+    }
+
+    div#videos-wrapper aside{
+        width: 80%;
+    }
 
     .toggle + a,
     .menu {
@@ -424,5 +456,14 @@ footer div:last-child{
     [id^=drop]:checked + ul {
         display: flex;
     }
+
+    [id^=drop]:checked span{
+        transform: rotate(45deg);
+    }
 }
 
+@media (max-width: 1000px) {
+    div#videos-grid div.grid-item{
+        width: 45%;
+    }
+}

@@ -89,8 +89,8 @@
                 <li><a href="index.html">Home</a></li>
                 <li>
                     <!-- First Tier Drop Down -->
-                    <label for="drop-1" class="toggle">iPhone 8 +</label>
-                    <a href="index.html#iphone-8-section">iPhone 8 +</a>
+                    <label for="drop-1" class="toggle">iPhone 8 <span>+</span></label>
+                    <a href="index.html#iphone-8-section">iPhone 8 <span>+<span></a>
                     <input type="checkbox" id="drop-1"/>
                     <ul>
                         <li><a href="index.html#iph8-spec">Specifications</a></li>
@@ -101,8 +101,8 @@
                 <li>
 
                 <!-- First Tier Drop Down -->
-                <label for="drop-2" class="toggle">iPhone X +</label>
-                <a href="index.html#iphone-x-section">iPhone X +</a>
+                <label for="drop-2" class="toggle">iPhone X <span>+</span></label>
+                <a href="index.html#iphone-x-section">iPhone X <span>+</span></a>
                 <input type="checkbox" id="drop-2"/>
                 <ul>
                     <li><a href="index.html#iphx-spec">Specifications</a></li>
